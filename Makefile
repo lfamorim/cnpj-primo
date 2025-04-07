@@ -13,15 +13,17 @@ else
 	LIBS = -lm
 endif
 
-TARGET = cnpj_primo
-SRC = primo.c
+TARGETS = cnpj_primo cpf_primo
 
-all: $(TARGET)
+all: $(TARGETS)
 
-$(TARGET): $(SRC)
+cnpj_primo: primo.c
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $< $(LIBS)
+
+cpf_primo: cpf_primo.c
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $< $(LIBS)
 
 clean:
-	rm -f $(TARGET)
+	rm -f $(TARGETS)
 
 .PHONY: all clean
